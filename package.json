@@ -1,5 +1,5 @@
 {
-  "name": "@product/app",
+  "name": "@aicore/app",
   "version": "0.1.0",
   "scripts": {
     "start": "vite build && electrobun dev",

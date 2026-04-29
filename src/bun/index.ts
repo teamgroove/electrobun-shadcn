@@ -1,4 +1,4 @@
-import { ApplicationMenu, BrowserView, BrowserWindow } from "electrobun/bun";
+import Electrobun, { ApplicationMenu, BrowserView, BrowserWindow, Utils } from "electrobun/bun";
 import type { MainRPC } from "shared/rpc";
 
 // HMR: use Vite dev server if running, otherwise use bundled views
@@ -18,7 +18,7 @@ async function getMainViewUrl(): Promise<string> {
 ApplicationMenu.setApplicationMenu([
 	{
 		submenu: [
-			{ label: "About product", role: "about" },
+			{ label: "About aicore", role: "about" },
 			{ type: "separator" },
 			{ label: "Quit", role: "quit", accelerator: "q" },
 		],
@@ -55,7 +55,7 @@ const mainRPC = BrowserView.defineRPC<MainRPC>({
 
 // Create main window
 const mainWindow = new BrowserWindow({
-	title: "product",
+	title: "aicore",
 	url: await getMainViewUrl(),
 	frame: {
 		width: 1200,
@@ -66,14 +66,20 @@ const mainWindow = new BrowserWindow({
 	rpc: mainRPC,
 });
 
+// Graceful shutdown cleanup
+Electrobun.events.on("before-quit", async () => {
+	console.log("App is quitting, performing cleanup...");
+	// Add async cleanup here (flush logs, close connections, persist state, etc.)
+});
+
 // Handle window events
 mainWindow.on("close", () => {
 	console.log("Main window closed");
-	process.exit(0);
+	Utils.quit();
 });
 
 mainWindow.webview.on("dom-ready", () => {
 	console.log("Webview DOM ready");
 });
 
-console.log("product app started");
+console.log("aicore app started");

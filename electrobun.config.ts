@@ -2,8 +2,8 @@ import type { ElectrobunConfig } from "electrobun/bun";
 
 export default {
 	app: {
-		name: "product",
-		identifier: "dev.product.app",
+		name: "aicore",
+		identifier: "dev.aicore.app",
 		version: "0.1.0",
 	},
 	build: {
@@ -22,16 +22,23 @@ export default {
 			codesign: false,
 			notarize: false,
 			bundleCEF: false,
+			icons: "assets/icon.iconset",
 			entitlements: {},
 		},
 		linux: {
 			bundleCEF: false,
+			icon: "assets/icon.png",
 		},
 		win: {
 			bundleCEF: false,
+			icon: "assets/icon.ico",
 		},
 	},
+	runtime: {
+		exitOnLastWindowClosed: true,
+	},
 	release: {
-		baseUrl: "",
+		baseUrl: "https://update.safegate.apps.aicore.run",
+		generatePatch: true,
 	},
 } satisfies ElectrobunConfig;

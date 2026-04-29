@@ -18,7 +18,7 @@ export function App() {
 				Electrobun + React + Vite + Tailwind CSS 4 + shadcn/ui.
 			</p>
 			<div className="flex gap-4">
-				<Button>Primary Button</Button>
+				<Button>Yo, huhu, fast, Primary Button</Button>
 				<Button variant="secondary">Secondary</Button>
 				<Button variant="outline">Outline</Button>
 				<Button variant="ghost">Ghost</Button>
