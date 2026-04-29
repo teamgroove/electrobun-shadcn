@@ -3,7 +3,7 @@ import type { ElectrobunConfig } from "electrobun/bun";
 export default {
 	app: {
 		name: "aicore",
-		identifier: "dev.aicore.app",
+		identifier: "safegate.apps.aicore.run",
 		version: "0.1.0",
 	},
 	build: {
